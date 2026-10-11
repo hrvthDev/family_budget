@@ -19,7 +19,15 @@ const User = {
         );
 
         return result.insertId;
-    }
+    }, 
+    async findById(id) {
+    const [rows] = await db.execute(
+        'SELECT id, username, email FROM users WHERE id = ?',
+        [id]
+    );
+
+    return rows[0];
+},
 
 };
 
